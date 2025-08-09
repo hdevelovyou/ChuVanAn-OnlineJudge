@@ -1,5 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from './Login';
+import Register from './Register';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
       }}>
         <h1>Chào mừng đến với ChuVanAn-OnlineJudge!</h1>
         <p>Trang web chấm bài tự động dành cho học sinh chuyên Chu Văn An.</p>
+        <Register />
+        <Login />
       </div>
     </div>
   );
