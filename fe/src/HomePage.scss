@@ -1,0 +1,56 @@
+.homepage {
+  min-height: 100vh;
+  background: #f0f2f5;
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+
+    &__logo {
+      display: flex;
+      align-items: center;
+      img {
+        height: 40px;
+        margin-right: 12px;
+      }
+      span {
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #2d3a4b;
+      }
+    }
+
+    &__actions button {
+      margin-left: 12px;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #1976d2;
+      color: #fff;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      &:hover {
+        background: #125ea2;
+      }
+    }
+  }
+
+  &__banner {
+    margin-top: 80px;
+    text-align: center;
+    h1 {
+      font-size: 2.5rem;
+      color: #1976d2;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #444;
+      margin-top: 12px;
+    }
+  }
+}

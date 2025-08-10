@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function Login() {
+export default function Login({ onBack }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [msg, setMsg] = useState('');
@@ -42,6 +42,7 @@ export default function Login() {
                     />
                 </div>
                 <button type="submit">Đăng nhập</button>
+                <button type="button" onClick={onBack}>Quay lại</button>
             </form>
             {msg && <p>{msg}</p>}
         </div>

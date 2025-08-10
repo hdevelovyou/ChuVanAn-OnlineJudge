@@ -1,29 +1,23 @@
+import React, { useState } from 'react';
 import './App.css';
+import HomePage from './HomePage';
 import Login from './Login';
 import Register from './Register';
 
 function App() {
+  const [page, setPage] = useState('home');
+
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: '#f0f2f5'
-    }}>
-      <div style={{
-        padding: '40px 60px',
-        background: '#fff',
-        borderRadius: '16px',
-        boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
-        textAlign: 'center'
-      }}>
-        <h1>Chào mừng đến với ChuVanAn-OnlineJudge!</h1>
-        <p>Trang web chấm bài tự động dành cho học sinh chuyên Chu Văn An.</p>
-        <Register />
-        <Login />
-      </div>
-    </div>
+    <>
+    {page === 'home' && (
+      <HomePage
+        onLogin={() => setPage('login')}
+        onRegister={() => setPage('register')}
+      />
+    )}
+    {page === 'login' && <Login onBack={() => setPage('home')} />}
+    {page === 'register' && <Register onBack={() => setPage('home')} />}
+    </>
   );
 }
 

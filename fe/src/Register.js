@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function Register() {
+export default function Register({ onBack }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -52,6 +52,7 @@ export default function Register() {
                     />
                 </div>
                 <button type="submit">Đăng ký</button>
+                <button type="button" onClick={onBack}>Quay lại</button>
             </form>
             {msg && <p>{msg}</p>}
         </div>
