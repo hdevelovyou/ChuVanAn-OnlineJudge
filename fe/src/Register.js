@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function Register({ onBack }) {
+export default function Register({ onBack, onRegisterSuccess }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -16,6 +16,9 @@ export default function Register({ onBack }) {
                 email
             });
             setMsg('Đăng ký thành công!');
+            if (onRegisterSuccess) {
+                onRegisterSuccess(username);
+            }
         } catch (err) {
             setMsg(err.response?.data?.message || 'Lỗi đăng ký');
         }
