@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import ForgotPassword from './components/ForgotPassword';
-import VerifyOTP from './components/VerifyOTP';
-import ResetPassword from './components/ResetPassword';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword';
+import VerifyOTP from './components/ForgotPassword/VerifyOTP';
+import ResetPassword from './components/ForgotPassword/ResetPassword';
 
 export default function Login({ onBack, onLoginSuccess }) {
     const [username, setUsername] = useState('');
@@ -18,12 +18,12 @@ export default function Login({ onBack, onLoginSuccess }) {
         try {
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
                 username,
-                password
+                password,
             });
             localStorage.setItem('token', res.data.token);
             setMsg('Đăng nhập thành công!');
             if(onLoginSuccess) {
-                onLoginSuccess(username);
+                onLoginSuccess(username, res.data.role);
             }
         } catch (err) {
             setMsg(err.response?.data?.message || 'Lỗi đăng nhập');

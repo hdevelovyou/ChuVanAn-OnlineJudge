@@ -14,6 +14,12 @@ const authRouter = require('./routes/auth');
 app.use(express.json());
 app.use('/api/auth', authRouter);
 
+const problemRouter = require('./routes/problem');
+app.use('/api/problem', problemRouter);
+
+const submissionRouter = require('./routes/submission');
+app.use('/api/submissions', submissionRouter);
+
 app.get('/test-db', async (req, res) => {
     try {
         const [rows] = await db.query('SELECT 1 + 1 AS solution');

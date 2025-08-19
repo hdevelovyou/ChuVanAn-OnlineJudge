@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./assets/images/LOGO_CVAOJ.png";
 
-export default function HomePage({ onLogin, onRegister, isLoggedIn, username, onLogout}) {
+export default function HomePage({ onLogin, onRegister, isLoggedIn, username, onLogout, onViewProblems}) {
     return (
         <div className="homepage">
             <nav className="navbar">
@@ -10,6 +10,7 @@ export default function HomePage({ onLogin, onRegister, isLoggedIn, username, on
                     <span>CVAOJ</span>
         </div>
         <div className="navbar_actions">
+            <button onClick={onViewProblems}>Bài tập</button>
             {isLoggedIn ? (
             <>
                 <span style={{ marginRight: '20px' }}>Xin chào, <b>{username}</b></span>

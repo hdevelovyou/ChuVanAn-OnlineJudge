@@ -37,7 +37,7 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, role } = req.body;
     if(!username || !password) {
         return res.status(400).json({ message: 'Vui lòng điền đầy đủ thông tin' });
     }
@@ -53,8 +53,8 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Tên đăng nhập hoặc mật khẩu không chính xác' }); 
         
         // Tạo JWT token
-        const token = jwt.sign({ userId: user.id, username: user.username}, process.env.SECRET_KEY, { expiresIn: '1h' });
-        res.json({ message: 'Đăng nhập thành công', token });
+        const token = jwt.sign({ userId: user.id, username: user.username, role:user.role}, process.env.SECRET_KEY, { expiresIn: '1h' });
+        res.json({ message: 'Đăng nhập thành công', token, role: user.role });
     } catch (err) {
         res.status(500).json({ message: 'Đăng nhập không thành công', error: err.message });
     }

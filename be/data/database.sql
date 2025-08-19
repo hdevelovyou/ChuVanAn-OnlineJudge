@@ -9,7 +9,6 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS problems (
     id              INT PRIMARY KEY AUTO_INCREMENT,
-    code            VARCHAR(20) UNIQUE NOT NULL,  -- VD: P1001
     title           VARCHAR(255) NOT NULL,
     description     TEXT,
     input_format    TEXT,
@@ -19,7 +18,9 @@ CREATE TABLE IF NOT EXISTS problems (
     sample_output   TEXT,
     time_limit      FLOAT NOT NULL,  -- seconds
     memory_limit    INT NOT NULL,    -- MB
-    created_at      DATETIME DEFAULT CURRENT_TIMESTAMP
+    type           TEXT,
+    created_at      DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (author) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS testcases (
