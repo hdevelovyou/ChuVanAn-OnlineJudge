@@ -2,7 +2,7 @@ import React, { useState, useEffect, use } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
-export default function SubmitCode() {
+export default function SubmitCode({ onViewAllSubmissions }) {
     const userId = localStorage.getItem('user_id');
     const { problemId } = useParams();
     const [problemTitle, setProblemTitle] = useState('');
@@ -42,7 +42,8 @@ export default function SubmitCode() {
                 `${process.env.REACT_APP_API_URL}/api/submission/submit`, 
                 formData, 
                 { headers: { 'Content-Type': 'multipart/form-data' } }
-            )
+            );
+            navigate(`/problems/${problemId}/submissions`);
         } catch (err) {
             setMsg('Lỗi khi nộp bài: ' + err.response?.data?.message || err.message);
             return;

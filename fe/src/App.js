@@ -101,7 +101,9 @@ function App() {
       <Route
         path="/problems/:problemId/submit"
         element={
-          <SubmitCode />
+          <SubmitCode 
+            onViewAllSubmissions={id => navigate(`/problems/${id}/submissions`)}
+          />
         }
       />
       <Route

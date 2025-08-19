@@ -47,14 +47,12 @@ router.get('/all', async (req, res) => {
 });
 
 router.get('/allHome', async (req, res) => {
-    const { problem_id } = req.query;
     try {
         const [rows] = await db.query(
             `SELECT p.title, s.*, u.username
             FROM problems p
             JOIN submissions s ON p.id = s.problem_id
             JOIN users u ON s.user_id = u.id
-            WHERE s.problem_id = ?
             ORDER BY s.submitted_at DESC`,
             [problem_id]
         );

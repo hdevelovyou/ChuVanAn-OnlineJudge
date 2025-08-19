@@ -9,7 +9,7 @@ export default function SubmissionsList( { onBack } ) {
     const { problemId }= useParams();
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/submission/all?problem_id=${problemId}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/submission/allHome`)
             .then(res => setSubmissions(res.data));
         axios.get(`${process.env.REACT_APP_API_URL}/api/problem/${problemId}`)
             .then(res => {
