@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
 export default function SubmitCode() {
+    const userId = localStorage.getItem('user_id');
     const { problemId } = useParams();
     const [problemTitle, setProblemTitle] = useState('');
     const navigate = useNavigate();
@@ -24,10 +25,11 @@ export default function SubmitCode() {
     const handleSubmit = async e => {
         e.preventDefault();
         if (!code && !file) {
-            setMessage('Vui lòng nhập code hoặc tải lên tệp');
+            setMsg('Vui lòng nhập code hoặc tải lên tệp');
             return;
         }
         const formData = new FormData();
+        formData.append('user_id', userId);
         formData.append('problem_id', problemId);
         formData.append('language', language);
         if(file) {

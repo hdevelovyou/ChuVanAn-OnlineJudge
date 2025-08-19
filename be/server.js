@@ -18,7 +18,7 @@ const problemRouter = require('./routes/problem');
 app.use('/api/problem', problemRouter);
 
 const submissionRouter = require('./routes/submission');
-app.use('/api/submissions', submissionRouter);
+app.use('/api/submission', submissionRouter);
 
 app.get('/test-db', async (req, res) => {
     try {

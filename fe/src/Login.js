@@ -21,6 +21,7 @@ export default function Login({ onBack, onLoginSuccess }) {
                 password,
             });
             localStorage.setItem('token', res.data.token);
+            localStorage.setItem('user_id', res.data.id);
             setMsg('Đăng nhập thành công!');
             if(onLoginSuccess) {
                 onLoginSuccess(username, res.data.role);

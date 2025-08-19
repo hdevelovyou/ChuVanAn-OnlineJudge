@@ -32,6 +32,7 @@ function App() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     localStorage.removeItem('role');
+    localStorage.removeItem('user_id');
     navigate('/');
   };
 
