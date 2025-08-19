@@ -1,7 +1,9 @@
 import React from "react";
 import logo from "./assets/images/LOGO_CVAOJ.png";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage({ onLogin, onRegister, isLoggedIn, username, onLogout, onViewProblems}) {
+    const navigate = useNavigate();
     return (
         <div className="homepage">
             <nav className="navbar">
@@ -11,6 +13,7 @@ export default function HomePage({ onLogin, onRegister, isLoggedIn, username, on
         </div>
         <div className="navbar_actions">
             <button onClick={onViewProblems}>Bài tập</button>
+            <button onClick={() => navigate('/submissions/all')}>Tất cả bài nộp</button>
             {isLoggedIn ? (
             <>
                 <span style={{ marginRight: '20px' }}>Xin chào, <b>{username}</b></span>

@@ -2,32 +2,22 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
-export default function SubmissionsList( { onBack } ) {
+export default function SubmissionsList() {
     const [submissions, setSubmissions] = useState([]);
-    const [problemTitle, setProblemTitle] = useState('');
     const navigate = useNavigate();
-    const { problemId }= useParams();
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/api/submission/allHome`)
             .then(res => setSubmissions(res.data));
-        axios.get(`${process.env.REACT_APP_API_URL}/api/problem/${problemId}`)
-            .then(res => {
-                setProblemTitle(res.data.title);
-            });
-    }, [problemId]);
+    }, []);
     return (
         <div>
-            <h3>
-                Tất cả bài nộp cho{" "} 
-                <Link to={`/problems/${problemId}`}>
-                    {problemTitle || 'Bài tập'}
-                </Link>
-            </h3>
-            <button onClick={() => onBack(problemId)}>Quay lại</button>
+            <h3>Tất cả bài nộp</h3>
+            <button onClick={() => navigate(-1)}>Quay lại</button>
             <table>
                 <thead>
                     <tr>
+                        <th>Bài tập</th>
                         <th>Trạng thái</th>
                         <th>Người nộp</th>
                         <th>Thời gian</th>
@@ -38,6 +28,11 @@ export default function SubmissionsList( { onBack } ) {
                 <tbody>
                     {submissions.map(submission => (
                         <tr key={submission.id}>
+                            <td>
+                                <Link to={`/problems/${submission.problem_id}`}>
+                                    {submission.problem_title}
+                                </Link>
+                            </td>
                             <td>{submission.status}</td>
                             <td>{submission.username}</td>
                             <td>{new Date(submission.submitted_at).toLocaleString()}</td>

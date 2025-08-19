@@ -10,6 +10,7 @@ import SubmitCode from './components/Submissions/SubmitCode';
 import SubmissionsList from './components/Submissions/SubmissionsList';
 import BestSubmissions from './components/Submissions/BestSubmissions';
 import AdminAddProblem from './components/Problems/AdminAddProblem';
+import AllSubmissions from './components/Submissions/AllSubmissions';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -99,10 +100,16 @@ function App() {
         }
       />
       <Route
+        path="/submissions/all"
+        element={
+          <AllSubmissions/>
+        }
+      />
+      <Route
         path="/problems/:problemId/submit"
         element={
           <SubmitCode 
-            onViewAllSubmissions={id => navigate(`/problems/${id}/submissions`)}
+            onViewAllSubmissions={id => navigate(`/problems/${id}/submissions`)}            
           />
         }
       />
