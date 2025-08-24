@@ -14,6 +14,7 @@ export default function HomePage({ onLogin, onRegister, isLoggedIn, username, on
         <div className="navbar_actions">
             <button onClick={onViewProblems}>Bài tập</button>
             <button onClick={() => navigate('/submissions/all')}>Tất cả bài nộp</button>
+            <button onClick={() => navigate('/members/all')}>Thành viên</button>
             {isLoggedIn ? (
             <>
                 <span style={{ marginRight: '20px' }}>Xin chào, <b>{username}</b></span>

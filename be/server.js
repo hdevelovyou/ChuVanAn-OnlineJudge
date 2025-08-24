@@ -20,6 +20,9 @@ app.use('/api/problem', problemRouter);
 const submissionRouter = require('./routes/submission');
 app.use('/api/submission', submissionRouter);
 
+const memberRouter = require('./routes/member');
+app.use('/api/member', memberRouter);
+
 app.get('/test-db', async (req, res) => {
     try {
         const [rows] = await db.query('SELECT 1 + 1 AS solution');

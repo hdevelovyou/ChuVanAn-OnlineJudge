@@ -75,7 +75,7 @@ router.get('/best', async (req, res) => {
                 WHERE problem_id = ? AND status = 'accepted'
                 GROUP BY user_id
             )
-            ORDER BY s.created_at DESC`,
+            ORDER BY s.submitted_at DESC`,
             [problem_id, problem_id]
         );
         res.json(rows);

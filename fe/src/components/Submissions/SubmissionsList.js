@@ -40,7 +40,7 @@ export default function SubmissionsList( { onBack } ) {
                         <tr key={submission.id}>
                             <td>{submission.status}</td>
                             <td>{submission.username}</td>
-                            <td>{new Date(submission.submitted_at).toLocaleString()}</td>
+                            <td>{new Date(submission.submitted_at).toLocaleString('vi-VN')}</td>
                             <td>{submission.language}</td>
                             <td>{submission.score || 'N/A'}</td>
                         </tr>

@@ -11,6 +11,8 @@ import SubmissionsList from './components/Submissions/SubmissionsList';
 import BestSubmissions from './components/Submissions/BestSubmissions';
 import AdminAddProblem from './components/Problems/AdminAddProblem';
 import AllSubmissions from './components/Submissions/AllSubmissions';
+import MembersList from './components/Members/MembersList';
+import Profile from './components/Members/Profile';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -126,6 +128,18 @@ function App() {
           <BestSubmissions
             onBack={id => navigate(`/problems/${id}`)}
           />
+        }
+      />
+      <Route 
+        path="/members/all"
+        element={
+          <MembersList />
+        }
+      />
+      <Route
+        path="/profile/:id"
+        element={
+          <Profile />
         }
       />
       <Route path="*" element={<Navigate to="/" />} />

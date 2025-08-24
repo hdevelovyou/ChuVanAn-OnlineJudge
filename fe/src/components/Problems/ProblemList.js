@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProblemList({ onSelect, isAdmin, onAdminAddProblem }) {
     const [problems, setProblems] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/api/problem/list`).then(res => setProblems(res.data));
@@ -18,6 +20,7 @@ export default function ProblemList({ onSelect, isAdmin, onAdminAddProblem }) {
                     <button onClick={onAdminAddProblem}>Thêm bài tập</button>
                 )
             }
+            <button onClick={() => navigate(-1)}>Quay lại</button>
             <ul>
                 {problems.map(problem => (
                     <li key={problem.id}>

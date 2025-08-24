@@ -8,7 +8,7 @@ export default function BestSubmissions({ onBack }) {
     const { problemId } = useParams();
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/submissions/all?problem_id=${problemId}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/submission/best?problem_id=${problemId}`)
             .then(res => setSubmissions(res.data));
         axios.get(`${process.env.REACT_APP_API_URL}/api/problem/${problemId}`)
             .then(res => {
@@ -39,7 +39,7 @@ export default function BestSubmissions({ onBack }) {
                         <tr key={submission.id}>
                             <td>{submission.status}</td>
                             <td>{submission.username}</td>
-                            <td>{new Date(submission.created_at).toLocaleString()}</td>
+                            <td>{new Date(submission.created_at).toLocaleString('vi-VN')}</td>
                             <td>{submission.language}</td>
                             <td>{submission.score || 'N/A'}</td>
                         </tr>
