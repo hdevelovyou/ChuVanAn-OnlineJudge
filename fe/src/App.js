@@ -13,6 +13,7 @@ import AdminAddProblem from './components/Problems/AdminAddProblem';
 import AllSubmissions from './components/Submissions/AllSubmissions';
 import MembersList from './components/Members/MembersList';
 import Profile from './components/Members/Profile';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -36,10 +37,14 @@ function App() {
     localStorage.removeItem('username');
     localStorage.removeItem('role');
     localStorage.removeItem('user_id');
+    setIsAdmin(false);
+    setIsLoggedIn(false);
     navigate('/');
   };
 
   return (
+    <>
+    <Navbar onLogout={handleLogout}/>
     <Routes>
       <Route
         path="/"
@@ -144,6 +149,7 @@ function App() {
       />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
+    </>
   );
 }
 

@@ -19,9 +19,7 @@ export default function BestSubmissions({ onBack }) {
         <div>
             <h3>
                 Bài nộp tốt nhất cho {" "}
-                <Link to={`/problem/${problemId}`}>
                     {problemTitle || 'Bài tập'}
-                </Link>
             </h3>
             <button onClick={() => onBack(problemId)}>Quay lại</button>
             <table>

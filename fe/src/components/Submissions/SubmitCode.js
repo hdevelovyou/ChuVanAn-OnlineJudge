@@ -28,6 +28,11 @@ export default function SubmitCode({ onViewAllSubmissions }) {
             setMsg('Vui lòng nhập code hoặc tải lên tệp');
             return;
         }
+        if(!userId)
+        {
+            setMsg('Vui lòng đăng nhập để nộp bài');
+            return;
+        }
         const formData = new FormData();
         formData.append('user_id', userId);
         formData.append('problem_id', problemId);
