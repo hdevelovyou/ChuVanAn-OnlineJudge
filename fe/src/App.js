@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import './App.css';
 import HomePage from './HomePage';
@@ -29,7 +29,7 @@ function App() {
     navigate('/');
   };
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     setIsLoggedIn(false);
     setUsername('');
     localStorage.removeItem('token');
@@ -37,7 +37,7 @@ function App() {
     localStorage.removeItem('role');
     localStorage.removeItem('user_id');
     navigate('/');
-  };
+  }, [navigate]);
 
   return (
     <Routes>

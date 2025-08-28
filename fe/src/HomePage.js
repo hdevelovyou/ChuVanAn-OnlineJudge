@@ -2,8 +2,9 @@ import React from "react";
 import logo from "./assets/images/LOGO_CVAOJ.png";
 import { useNavigate } from "react-router-dom";
 
-export default function HomePage({ onLogin, onRegister, isLoggedIn, username, onLogout, onViewProblems}) {
+export default function HomePage({ onLogin, onRegister, isLoggedIn, username, onLogout, onViewProblems }) {
     const navigate = useNavigate();
+    
     return (
         <div className="homepage">
             <nav className="navbar">
